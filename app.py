@@ -8,6 +8,8 @@ from tensorflow.keras.models import load_model
 import plotly.graph_objects as go
 import matplotlib.pyplot as plt
 import time
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 def feature_input(data, scaler):
   timeSteps = 10
