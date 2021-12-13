@@ -36,12 +36,7 @@ def pred_target(X, model, scaler):
   return next5DaysClose
 
 def df_close_plus_pred(y_close, y_pred):
-  day_names = ['Friday', 'Thursday', 'Wednesday', 'Tuesday', 'Monday']
-
-  for i, d in enumerate(day_names, 3):
-    if y_close.index.max().day_name() == d:
-      next_date = y_close.index.max() + timedelta(days=i)
-      next_5dates = [next_date + timedelta(days=j) for j in range(5)]
+  next_5dates = [(y_close.index.max() + timedelta(days=3)) if y_close.index.max().day_name()=='Friday' else (y_close.index.max() + timedelta(days=i)) for i in range(1,6)]
 
   df_pred = pd.DataFrame(np.concatenate(([y_close[-1]], y_pred), axis=0), index=[y_close.index.max()]+next_5dates, columns=['Close pred'])
   df_conclose = pd.concat([y_close, df_pred])
