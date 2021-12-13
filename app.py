@@ -43,7 +43,7 @@ def df_close_plus_pred(y_close, y_pred):
       next_date = y_close.index.max() + timedelta(days=i)
       next_5dates = [next_date + timedelta(days=j) for j in range(5)]
 
-  df_pred = pd.DataFrame(y_pred, index=next_5dates, columns=['Close pred'])
+  df_pred = pd.DataFrame(np.cancatenate((y_close[-1], y_pred), axis=0), index=[y_close.index.max()]+next_5dates, columns=['Close pred'])
   df_conclose = pd.concat([y_close, df_pred])
   df_conclose.rename(columns={0: "Close"}, inplace=True)
   return df_conclose
@@ -72,7 +72,7 @@ def content_ticker_selected(ticker, data, y_pred):
          prediksi secara grafis. Sedangkan untuk nilai prediksi sebagai 
          berikut ... 
      """)
-     st.table(close_df[-5:,-1])
+     st.table(close_df.iloc[-5:,-1])
 
 def pilih_models():
   pilih_model = st.radio(
