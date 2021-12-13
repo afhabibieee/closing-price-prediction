@@ -23,8 +23,8 @@ def feature_input(data, scaler):
   n_features=scaled.shape[1]
   
   # Reshaping data sebagai 3D input
-  scaled=scaled.reshape(n_samples,timeSteps,n_features)
-  return scaled
+  reshape_scaled=scaled.reshape(n_samples,timeSteps,n_features)
+  return reshape_scaled
 
 def pred_target(X, model, scaler):
   # Buat prediksi Close value untuk 5 hari kedepan
