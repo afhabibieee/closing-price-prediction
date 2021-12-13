@@ -13,10 +13,10 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 def feature_input(data, scaler):
   timeSteps = 10
-  end = data.index.max()
-  start = end - timedelta(days=timeSteps+1)
-  data_input = data.loc[start:end]
-
+#  end = data.index.max()
+#  start = end - timedelta(days=timeSteps+1)
+#  data_input = data.loc[start:end]
+  data_input = data.iloc[-timeSteps:]
   scaled = scaler.fit_transform(data_input)
 
   n_samples=1
