@@ -43,9 +43,9 @@ def df_close_plus_pred(y_close, y_pred):
       next_date = y_close.index.max() + timedelta(days=i)
       next_5dates = [next_date + timedelta(days=j) for j in range(5)]
 
-  df_pred = pd.DataFrame(y_pred, index=next_5dates)
-  df_conclose = pd.concat([y_close, df_pred], axis=0)
-  df_conclose.rename(columns={0: "Close \n+ \nPredicted"}, inplace=True)
+  df_pred = pd.DataFrame(y_pred, index=next_5dates, columns='Close pred')
+  df_conclose = pd.concat([y_close, df_pred])
+  df_conclose.rename(columns={0: "Close"}, inplace=True)
   return df_conclose
 
 def content_ticker_selected(ticker, data, y_pred):
