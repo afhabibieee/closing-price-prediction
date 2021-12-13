@@ -151,8 +151,7 @@ def main():
   else:
     st.title("ABOUT US")
     st.subheader(
-      """Tugas Akhir Microcredential Data Scientist
-         Host: Institut Teknologi Bandung 02"""
+      """Tugas Akhir Microcredential Data Scientist \nHost: Institut Teknologi Bandung 02"""
     )
     with st.container():
       st.write("KELOMPOK 5")
