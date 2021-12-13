@@ -23,8 +23,8 @@ def feature_input(data, scaler):
   n_features=scaled.shape[1]
   
   # Reshaping data sebagai 3D input
-  reshape_scaled=scaled.reshape(n_samples,timeSteps,n_features)
-  return reshape_scaled
+  scaled=scaled.reshape(n_samples,timeSteps,n_features)
+  return scaled
 
 def pred_target(X, model, scaler):
   # Buat prediksi Close value untuk 5 hari kedepan
@@ -92,6 +92,7 @@ def proses_prediksi(choice, model):
   data.drop('Volume', inplace=True, axis=1)
   if 0 not in np.array(data.isna().sum()):
     data.dropna(inplace=True)
+  
   scaler = MinMaxScaler(feature_range=(0,1))
   X = feature_input(data, scaler)
   y_pred = pred_target(X, model, scaler)
@@ -136,17 +137,17 @@ def main():
     with st.spinner('Ini adalah dataset utama yang untuk melatih model'):
       time.sleep(3)
 
-    data, y_pred = proses_prediksi(choice, model)
-    content_ticker_selected(choice, data, y_pred)
+    data, y_pred = proses_prediksi(str(choice), model)
+    content_ticker_selected(str(choice), data, y_pred)
   elif choice == 'BBCA.JK':
-    data, y_pred = proses_prediksi(choice, model)
-    content_ticker_selected(choice, data, y_pred)
+    data, y_pred = proses_prediksi(str(choice), model)
+    content_ticker_selected(str(choice), data, y_pred)
   elif choice == 'BBNI.JK':
-    data, y_pred = proses_prediksi(choice, model)
-    content_ticker_selected(choice, data, y_pred)
+    data, y_pred = proses_prediksi(str(choice), model)
+    content_ticker_selected(str(choice), data, y_pred)
   elif choice == 'BMRI.JK':
-    data, y_pred = proses_prediksi(choice, model)
-    content_ticker_selected(choice, data, y_pred)
+    data, y_pred = proses_prediksi(str(choice), model)
+    content_ticker_selected(str(choice), data, y_pred)
   else:
     st.title("ABOUT US")
     st.subheader("Microcredential Host: Institut Teknologi Bandung 02")
