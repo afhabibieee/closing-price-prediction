@@ -3,7 +3,7 @@ streamlit==1.2.0
 yfinance==0.1.67
 numpy==1.19.5
 DateTime==4.3
-sklearn==0.0
+scikit-learn==1.0.1
 tensorflow==2.7.0
 plotly==4.4.1
 matplotlib==3.2.2
