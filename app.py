@@ -150,7 +150,10 @@ def main():
     content_ticker_selected(str(choice), data, y_pred)
   else:
     st.title("ABOUT US")
-    st.subheader("Microcredential Host: Institut Teknologi Bandung 02")
+    st.subheader(
+      """Tugas Akhir Microcredential Data Scientist
+         Host: Institut Teknologi Bandung 02"""
+    )
     with st.container():
       st.write("KELOMPOK 5")
       with st.expander("Adil Faruq Habibi"):
