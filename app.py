@@ -72,7 +72,7 @@ def content_ticker_selected(ticker, data, y_pred):
          prediksi secara grafis. Sedangkan untuk nilai prediksi sebagai 
          berikut ... 
      """)
-     st.table(close_df[-5:])
+     st.table(close_df[-5:,-1])
 
 def pilih_models():
   pilih_model = st.radio(
