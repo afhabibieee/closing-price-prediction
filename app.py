@@ -98,7 +98,10 @@ PAGE_CONFIG = {"page_title":"Closing Price Prediction","page_icon":":smiley:","l
 st.set_page_config(**PAGE_CONFIG)
 def main():
   menu = ["Home","BBRI.JK",'BBCA.JK','BBNI.JK','BMRI.JK',"About"]
-  model = load_model('model_lstm2.h5')
+#  model = load_model('model_lstm2.h5')
+  if 'model' not in st.session_state:
+    st.session_state['model'] = load_model('model_lstm2.h5')
+  
   choice = st.sidebar.selectbox('Menu',menu)
   if choice == 'Home':
     with st.spinner('Klik toggle menu yang ada di pojok kiri untuk melihat hasil prediksi :)'):
@@ -108,7 +111,7 @@ def main():
 
     col1, col2 = st.columns(2)
     with col1:
-        model = pilih_models()
+        st.session_state.model = pilih_models()
         st.markdown("")
         
     with col2:
@@ -133,16 +136,16 @@ def main():
     with st.spinner('Ini adalah dataset utama yang untuk melatih model'):
       time.sleep(3)
 
-    data, y_pred = proses_prediksi(str(choice), model)
+    data, y_pred = proses_prediksi(str(choice), st.session_state.model)
     content_ticker_selected(str(choice), data, y_pred)
   elif choice == 'BBCA.JK':
-    data, y_pred = proses_prediksi(str(choice), model)
+    data, y_pred = proses_prediksi(str(choice), st.session_state.model)
     content_ticker_selected(str(choice), data, y_pred)
   elif choice == 'BBNI.JK':
-    data, y_pred = proses_prediksi(str(choice), model)
+    data, y_pred = proses_prediksi(str(choice), st.session_state.model)
     content_ticker_selected(str(choice), data, y_pred)
   elif choice == 'BMRI.JK':
-    data, y_pred = proses_prediksi(str(choice), model)
+    data, y_pred = proses_prediksi(str(choice), st.session_state.model)
     content_ticker_selected(str(choice), data, y_pred)
   else:
     st.title("ABOUT US")
