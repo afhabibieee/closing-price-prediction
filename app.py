@@ -59,7 +59,7 @@ def content_ticker_selected(ticker, data, y_pred):
   
   st.subheader('\nClosing price aktual dan prediksi 5 hari kedepan')
   close_df = df_close_plus_pred(data.Close, y_pred)
-  st.area_chart(close_df)
+  st.line_chart(close_df)
   with st.expander("Penjelasan lebih lajut"):
      st.write("""
          Line chart diatas menampilkan data historis dan data prediktif.
